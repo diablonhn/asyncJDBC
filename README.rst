@@ -42,15 +42,15 @@ Completely Fair Scheduling
 asyncJDBC's queue-based scheduling ensures that it processes requests in order.  This
 gives a hard upper bound on the time for a query to start executing.  Given:
 
-* Tquery  : maximum execution time of a query
-* Qdepth  : queue depth (number of concurrent clients)
-* Npool   : number of workers in the queue
+* T\ :subscript:`query`  : maximum execution time of a query
+* Q\ :subscript:`depth`  : queue depth (number of concurrent clients)
+* N\ :subscript:`pool`   : number of workers in the queue
 
-The maximum queue time is: Tmax = Tquery * (Qdepth / Npool).  For example:
+The maximum queue time is: T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).  For example:
 
-* Tquery   =   100ms
-* Qdepth   =   1000
-* Npool    =   100
+* T\ :subscript:`query`   =   100ms
+* Q\ :subscript:`depth`   =   1000
+* N\ :subscript:`pool`    =   100
 
 Tmax would 100ms * (1000 / 100) = *1 second*, which is the absolute worst case
 scenario.  Having an upper bound is every operation engineers' wish come true.
