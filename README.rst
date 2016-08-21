@@ -1,7 +1,8 @@
 asyncJBDC
 =========
 asyncJBDC is a fast asynchronous JDBC connection pool for reactive applications.
-It is built with `Baratine <http://baratine.io/>`_, a reactive service platform.  asyncJDBC features:
+It is built with `Baratine <http://baratine.io/>`_, a reactive service platform.
+asyncJDBC features:
 
 * completely fair scheduling with FIFO (first-in, first-out)
 * supra-consistent response times and behavior
@@ -15,10 +16,11 @@ asyncJDBC accomplishes this by pushing requests onto a queue and processing
 them in order.
 
 The fastest and most feature-rich synchronous JDBC connection pool out there is
-HikariCP, by far.  It beats the pants off of everyone else, including
-asyncJDBC.  However under high concurrency, asyncJDBC is faster than HikariCP.
-More importantly, asyncJDBC exhibits more consistent response times, which
-is extremely valuable in a production environment.
+`HikariCP <https://github.com/brettwooldridge/HikariCP>`_, by far.  It beats
+the pants off of everyone else, including asyncJDBC.  However under high
+concurrency, asyncJDBC is faster than HikariCP. More importantly, asyncJDBC
+exhibits more consistent response times, which is extremely valuable in a
+production environment.
 
 [benchmark chart]
 
