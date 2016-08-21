@@ -1,6 +1,6 @@
-asyncJBDC
+asyncJDBC
 =========
-asyncJBDC is a fast asynchronous JDBC connection pool for reactive applications.
+asyncJDBC is a fast asynchronous JDBC connection pool for reactive applications.
 It is built with `Baratine <http://baratine.io/>`_, a reactive service platform.
 asyncJDBC features:
 
