@@ -27,7 +27,9 @@ production environment.
 Usage
 -----
 asyncJDBC is easy to use because it basically wraps JDBC around an async
-interface.  asyncJDBC comes with both async and sync methods::
+interface.  asyncJDBC comes with both async and sync methods:
+
+.. code-block:: java
 
     void execute(Result<Integer> result, String sql, Object ... params);
     int execute(String sql, Object ... params);
@@ -46,7 +48,9 @@ The async methods accept a ``Result`` callback and return ``void``.
 Simple Async Query
 ------------------
 A simple query returns an offline ``java.sql.ResultSet`` that is fully read
-into memory.  To send a simple query::
+into memory.  To send a simple query:
+
+.. code-block:: java
 
     public void main(String[] args) throws Exception {
       JdbcServiceSync jdbc = AsyncJdbc.builder().url(url).poolSize(32).create();
@@ -76,7 +80,7 @@ work just as well.
 Working With the Connection Directly
 ------------------------------------
 
-::
+.. code-block:: java
 
     public void main(String[] args) throws Exception {
       JdbcServiceSync jdbc = AsyncJdbc.builder().url(url).poolSize(32).create();
@@ -106,7 +110,7 @@ Working With the Connection Directly
 Simple Sync Query
 -----------------
 
-::
+.. code-block:: java
 
     public void main(String[] args) throws Exception {
       JdbcServiceSync jdbc = AsyncJdbc.builder().url(url).poolSize(32).create();
