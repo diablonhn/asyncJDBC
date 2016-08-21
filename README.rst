@@ -26,6 +26,17 @@ production environment.
 
 .. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp.png
 
+The benchmark for the graph above uses the following parameters:
+
+* 1000 concurrent clients (blocking for HikariCP, async for asyncJDBC)
+* acquire connection
+* open statement
+* close statement
+* release connection
+
+The goal of the benchmark is to see how the connection pool behaves under heavy resource
+contention.
+
 Completely Fair Scheduling
 --------------------------
 asyncJDBC's queue-based scheduling ensures that it processes requests in order.  This
