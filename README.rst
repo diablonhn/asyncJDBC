@@ -24,7 +24,7 @@ concurrency, asyncJDBC is faster than HikariCP. More importantly, asyncJDBC
 exhibits more consistent response times, which is extremely valuable in a
 production environment.
 
-[benchmark chart]
+.. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp.png
 
 Usage
 -----
