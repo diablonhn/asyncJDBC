@@ -41,7 +41,7 @@ The maximum queue time is: Tmax = Tquery * (Qdepth / Npool).  For example:
 * Qdepth   =   1000
 * Npool    =   100
 
-Tmax would 100ms * (1000 / 100) = **1 second**, which is the absolute worst case
+Tmax would 100ms * (1000 / 100) = *1 second*, which is the absolute worst case
 scenario.  Having an upper bound is every operation engineers' wish come true.
 
 Usage
