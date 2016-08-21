@@ -26,6 +26,24 @@ production environment.
 
 .. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp.png
 
+Completely Fair Scheduling
+--------------------------
+asyncJDBC's queue-based scheduling ensures that it processes requests in order.  This
+gives a hard upper bound on the time for a query to start executing.  Given:
+
+* Tquery  : maximum execution time of a query
+* Qdepth  : queue depth (number of concurrent clients)
+* Npool   : number of workers in the queue
+
+The maximum queue time is: Tmax = Tquery * (Qdepth / Npool).  For example:
+
+* Tquery   =   100ms
+* Qdepth   =   1000
+* Npool    =   100
+
+Tmax would 100ms * (1000 / 100) = *1 second*, which is great news for operation
+engineers who would die for a hard upper bound.
+
 Usage
 -----
 asyncJDBC is easy to use because it basically wraps JDBC around an async
