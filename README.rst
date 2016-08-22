@@ -168,4 +168,5 @@ contention.
 
 Support
 -------
-For discussions or bug reports, please open a new issue in GitHub `Issues <https://github.com/diablonhn/asyncJDBC/issues>`_.
+For discussions, feature requests, bug reports, or just to say that you find this library useful, please open a new issue in GitHub
+`Issues <https://github.com/diablonhn/asyncJDBC/issues>`_.
