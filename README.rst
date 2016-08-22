@@ -45,11 +45,11 @@ gives a hard upper bound on the time for a query to start executing.  Given:
 * Q\ :subscript:`depth`  : queue depth (number of concurrent clients)
 * N\ :subscript:`pool`   : number of workers in the queue
 
-In isolation, the maximum queue time is::
+In isolation, the maximum queue time is:
   
-  T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).
+    T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).
 
-For example:
+Plugging in some numbers:
 
 * T\ :subscript:`query`   =   10ms
 * Q\ :subscript:`depth`   =   1000
