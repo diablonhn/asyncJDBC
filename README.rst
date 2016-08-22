@@ -47,7 +47,7 @@ gives a hard upper bound on the time for a query to start executing.  Given:
 
 In isolation, the maximum queue time is:
   
-    T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).
+    T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`)
 
 Plugging in some numbers:
 
