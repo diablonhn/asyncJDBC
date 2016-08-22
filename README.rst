@@ -167,6 +167,11 @@ The benchmark uses the following parameters:
 The goal of the benchmark is to see how the connection pool behaves under heavy resource
 contention.
 
+Roadmap
+-------
+
+DataSource interface for use in Resin, Tomcat, Spring, Play, etc.??? (if there is demand)
+
 Support
 -------
 For discussions, feature requests, bug reports, or just to say that you find this library useful, please open a new issue in GitHub
