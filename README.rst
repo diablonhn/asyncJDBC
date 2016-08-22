@@ -7,7 +7,7 @@ Features
 --------
 
 * completely fair scheduling with FIFO (first-in, first-out)
-* supra-consistent response times and behavior
+* supra-consistent response times and behavior with no long tail distribution
 * non-blocking design
 * callback-based and synchronous interfaces
 * familiar JDBC programming
@@ -18,24 +18,23 @@ asyncJDBC accomplishes this by pushing requests onto a queue and processing
 them in order.
 
 The fastest and most feature-rich synchronous JDBC connection pool out there is
-`HikariCP <https://github.com/brettwooldridge/HikariCP>`_, by far.  It beats
-the pants off of everyone else, including asyncJDBC.  However under high
-concurrency, asyncJDBC is faster than HikariCP. More importantly, asyncJDBC
-exhibits more consistent response times, which is extremely valuable in a
-production environment.
+`HikariCP <https://github.com/brettwooldridge/HikariCP>`_, by far.  In terms of
+raw performance, it is much faster than any other connection pool out there,
+including asyncJDBC.
 
-.. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp.png
+.. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp-vs-dbcp.png
 
-The benchmark for the graph above uses the following parameters:
+But absolute raw performance doesn't always give the complete picture.  The request time
+distribution is more important for reliable, service-level-agreement (SLA) performance.
 
-* 1000 concurrent clients (blocking for HikariCP, async for asyncJDBC)
-* acquire connection
-* open statement
-* close statement
-* release connection
+.. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp-distribution.png
 
-The goal of the benchmark is to see how the connection pool behaves under heavy resource
-contention.
+The plot graph shows that HikariCP has excellent raw performance.  However, it has a long tail
+where requests take more than 8 seconds.  Yup, that's right, 8 seconds!  This can lead to
+sporadic timeouts due to no fault of the application.  The graph uses a low concurrency of
+only 100 clients and pool size of 16, so the problem only gets worser with higher load.
+asyncJDBC, on the other hand, has no long tail whatsoever because **100%** of the requests
+complete in under 35ms.
 
 Completely Fair Scheduling
 --------------------------
@@ -46,13 +45,17 @@ gives a hard upper bound on the time for a query to start executing.  Given:
 * Q\ :subscript:`depth`  : queue depth (number of concurrent clients)
 * N\ :subscript:`pool`   : number of workers in the queue
 
-The maximum queue time is: T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).  For example:
+In isolation, the maximum queue time is::
+  
+  T\ :subscript:`max` = T\ :subscript:`query` * (Q\ :subscript:`depth` / N\ :subscript:`pool`).
 
-* T\ :subscript:`query`   =   100ms
+For example:
+
+* T\ :subscript:`query`   =   10ms
 * Q\ :subscript:`depth`   =   1000
 * N\ :subscript:`pool`    =   100
 
-Tmax would 100ms * (1000 / 100) = *1 second*, which is the absolute worst case
+Tmax would 10ms * (1000 / 100) = **100 ms**, which is the absolute worst case
 scenario.  Having an upper bound is every operation engineers' wish come true.
 
 Usage
@@ -148,6 +151,20 @@ Simple Sync Query
     
       ResultSet rs = jdbc.query("SELECT * from testTable");
     }
+
+Benchmark Parameters
+--------------------
+
+The benchmark uses the following parameters:
+
+* 1000 concurrent clients (blocking for HikariCP, async for asyncJDBC)
+* acquire connection
+* open statement
+* close statement
+* release connection
+
+The goal of the benchmark is to see how the connection pool behaves under heavy resource
+contention.
 
 Support
 -------
