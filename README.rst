@@ -55,13 +55,13 @@ Plugging in some numbers:
 * Q\ :subscript:`depth`   =   1000
 * N\ :subscript:`pool`    =   100
 
-Tmax would 10ms * (1000 / 100) = **100 ms**, which is the absolute worst case
+Tmax would be 10ms * (1000 / 100) = **100 ms**, which is the absolute worst case
 scenario.  Having an upper bound is every operation engineers' wish come true.
 
 Usage
 -----
-asyncJDBC is easy to use because it basically wraps JDBC around an async
-interface.  asyncJDBC comes with both async and sync methods:
+asyncJDBC is intuitive to Java developers because it basically wraps JDBC around an
+async interface.  However, asyncJDBC comes with both async and sync methods:
 
 .. code-block:: java
 
