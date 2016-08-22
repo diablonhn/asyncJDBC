@@ -29,12 +29,12 @@ distribution is more important for reliable, service-level-agreement (SLA) perfo
 
 .. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp-distribution.png
 
-The plot graph shows that HikariCP has excellent raw performance.  However, it has a long tail
-where requests take more than 8 seconds.  Yup, that's right, 8 seconds!  This can lead to
-sporadic timeouts due to no fault of the application.  The graph uses a low concurrency of
-only 100 clients and pool size of 16, so the problem only gets worser with higher load.
-asyncJDBC, on the other hand, has no long tail whatsoever because **100%** of the requests
-complete in under 35ms.
+Digging deeper into the numbers, HikariCP has excellent raw performance.  However, it has a
+long tail where requests take more than 8 seconds.  Yup, that's right, 8 seconds!  This can
+lead to sporadic timeouts due to no fault of the application.  The benchmark uses a low
+concurrency of only 100 clients and pool size of 16, so the problem only gets worser with
+higher load. asyncJDBC, on the other hand, has no long tail whatsoever because **100%** of
+the requests complete in under 35ms.
 
 Completely Fair Scheduling
 --------------------------
