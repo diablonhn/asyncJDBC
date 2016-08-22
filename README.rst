@@ -57,7 +57,7 @@ Plugging in some numbers:
 * N\ :subscript:`pool`    =   100
 
 Tmax would be 10ms * (1000 / 100) = **100 ms**, which is the absolute worst case
-scenario.  Having an upper bound is every operation engineers' wish come true.
+scenario.  Having an upper bound is every operations engineers' wish come true.
 
 Usage
 -----
