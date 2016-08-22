@@ -31,10 +31,10 @@ distribution is more important for reliable, service-level-agreement (SLA) perfo
 .. image:: https://github.com/diablonhn/asyncJDBC/wiki/asyncjdbc-vs-hikaricp-distribution.png
 
 Digging deeper into the numbers, HikariCP has excellent raw performance.  However, it has a
-long tail where requests take more than 8 seconds.  Yup, that's right, 8 seconds!  This can
-lead to sporadic timeouts due to no fault of the application.  The benchmark uses a low
-concurrency of only 100 clients and pool size of 16, so the problem only gets worser with
-higher load. asyncJDBC, on the other hand, has no long tail whatsoever because **100%** of
+long tail where requests take up to 700ms.  In some runs, it went up to as high as 8 seconds!
+This can lead to sporadic timeouts due to no fault of the application.  The benchmark uses a
+low concurrency of only 100 clients and pool size of 16, so the problem only gets worser with
+higher load.  asyncJDBC, on the other hand, has no long tail whatsoever because **100%** of
 the requests complete in under 35ms.
 
 Completely Fair Scheduling
@@ -142,6 +142,13 @@ Working With the Connection Directly
       }
     }
 
+Fire-and-Forget Query
+---------------------
+
+To run a query asynchronously without caring for the result, just pass in a ``Result.ignore()`` callback::
+
+    jdbc.query(Result.ignore(), "SELECT * FROM testTable");
+
 Simple Sync Query
 -----------------
 
@@ -170,7 +177,7 @@ contention.
 Roadmap
 -------
 
-DataSource interface for use in Resin, Tomcat, Spring, Play, etc.??? (if there is demand)
+DataSource interface for use in Resin, Tomcat, Spring, Play Framework, etc. (if there is demand)???
 
 Support
 -------
