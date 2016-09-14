@@ -1,3 +1,7 @@
+For `Baratine Smart-Cache, please follow this link <https://github.com/baratine/smart-cache/>`_
+
+
+
 asyncJDBC
 =========
 asyncJDBC is a fast asynchronous JDBC connection pool with completely fair
